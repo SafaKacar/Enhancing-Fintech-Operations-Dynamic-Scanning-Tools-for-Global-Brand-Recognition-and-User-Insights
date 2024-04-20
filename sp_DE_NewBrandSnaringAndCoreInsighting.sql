@@ -48,7 +48,7 @@ DECLARE		@D11			as VARCHAR(MAX),
 		@_Region_2	as VARCHAR(MAX)
 
 DECLARE @_WholeTurkeyIndicator as BIT
-IF @_CountryName LIKE N'%Tur%'
+IF REPLACE(REPLACE(@_CountryName,'Ü','U'),'ü','U') LIKE N'%Tur%'
 BEGIN
 SET @_WholeTurkeyIndicator=1
 END
@@ -57,7 +57,101 @@ BEGIN
 SET @_WholeTurkeyIndicator=0
 END
 
+SET @_Description_1 =
+						REPLACE (
+						REPLACE (
+						REPLACE (
+						REPLACE (
+						REPLACE (
+						REPLACE (
+						REPLACE (
+						REPLACE(REPLACE(@_Description_1
+						,'Ü','U')
+						,'ü','U')
+						,'İ','I')
+						,'Ş','S')
+						,'ö','O')
+						,'Ö','O')
+						,'ı','I')
+						,'ğ','G')
+						,'Ğ','G')
 
+SET @_Description_2 =
+						REPLACE (
+						REPLACE (
+						REPLACE (
+						REPLACE (
+						REPLACE (
+						REPLACE (
+						REPLACE (
+						REPLACE(REPLACE(@_Description_2
+						,'Ü','U')
+						,'ü','U')
+						,'İ','I')
+						,'Ş','S')
+						,'ö','O')
+						,'Ö','O')
+						,'ı','I')
+						,'ğ','G')
+						,'Ğ','G')
+
+SET @_CityName =
+						REPLACE (
+						REPLACE (
+						REPLACE (
+						REPLACE (
+						REPLACE (
+						REPLACE (
+						REPLACE (
+						REPLACE(REPLACE(@_CityName
+						,'Ü','U')
+						,'ü','U')
+						,'İ','I')
+						,'Ş','S')
+						,'ö','O')
+						,'Ö','O')
+						,'ı','I')
+						,'ğ','G')
+						,'Ğ','G')
+
+SET @_CountryName =
+						REPLACE (
+						REPLACE (
+						REPLACE (
+						REPLACE (
+						REPLACE (
+						REPLACE (
+						REPLACE (
+						REPLACE(REPLACE(@_CountryName
+						,'Ü','U')
+						,'ü','U')
+						,'İ','I')
+						,'Ş','S')
+						,'ö','O')
+						,'Ö','O')
+						,'ı','I')
+						,'ğ','G')
+						,'Ğ','G')
+
+SET @_Region =
+						REPLACE (
+						REPLACE (
+						REPLACE (
+						REPLACE (
+						REPLACE (
+						REPLACE (
+						REPLACE (
+						REPLACE(REPLACE(@_Region
+						,'Ü','U')
+						,'ü','U')
+						,'İ','I')
+						,'Ş','S')
+						,'ö','O')
+						,'Ö','O')
+						,'ı','I')
+						,'ğ','G')
+						,'Ğ','G')
+	
 					DECLARE @_CityCodeTR_Results TABLE (Part NVARCHAR(MAX));
 					WHILE CHARINDEX(';', @_CityCodeTR) > 0
 					BEGIN
