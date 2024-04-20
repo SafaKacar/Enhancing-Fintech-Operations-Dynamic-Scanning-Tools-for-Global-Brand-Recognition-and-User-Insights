@@ -19,18 +19,18 @@ ALTER PROCEDURE  sp_DE_NewBrandSnaringAndCoreInsighting
 									   (@StartDate	    as DATE,
 									    @_Description_1 as VARCHAR(MAX)
 									   ,@_Description_2 as VARCHAR(MAX)
-									   ,@_Is_OfflineTransaction	AS VARCHAR(MAX)
-									   ,@_Is_NotDomestic		AS VARCHAR(MAX)
-									   ,@_CityCodeTR	AS VARCHAR(MAX)
-									   ,@_CityName		AS VARCHAR(MAX)
-									   ,@_CountryName   AS VARCHAR(MAX)
+									   ,@_Is_OfflineTransaction AS VARCHAR(MAX)
+									   ,@_Is_NotDomestic	    AS VARCHAR(MAX)
+									   ,@_CityCodeTR	    AS VARCHAR(MAX)
+									   ,@_CityName		    AS VARCHAR(MAX)
+									   ,@_CountryName           AS VARCHAR(MAX)
 									   ,@_Region		AS VARCHAR(MAX)
 									   ,@Recognized		AS VARCHAR(MAX)
 									   ,@_TxCountGreaterThanOrEqual AS INT
 									   ,@_ExternalPoolId		AS VARCHAR(MAX)
 									   )
  AS	
-DECLARE	@D11			as VARCHAR(MAX),
+DECLARE		@D11			as VARCHAR(MAX),
 		@D12			as VARCHAR(MAX),
 		@D21			as VARCHAR(MAX),
 		@D22			as VARCHAR(MAX),
@@ -44,8 +44,8 @@ DECLARE	@D11			as VARCHAR(MAX),
 		@_CityName_2    as VARCHAR(MAX),
 		@_CountryName_1 as VARCHAR(MAX),
 		@_CountryName_2 as VARCHAR(MAX),
-		@_Region_1		as VARCHAR(MAX),
-		@_Region_2		as VARCHAR(MAX)
+		@_Region_1	as VARCHAR(MAX),
+		@_Region_2	as VARCHAR(MAX)
 
 DECLARE @_WholeTurkeyIndicator as BIT
 IF @_CountryName LIKE N'%Tur%'
