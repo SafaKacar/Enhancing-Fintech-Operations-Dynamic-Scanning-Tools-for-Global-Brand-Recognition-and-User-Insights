@@ -725,10 +725,12 @@ END
 		)
 		SELECT
 			 UC.*
+			,ECA.BrandName
 			,PC.ENG_Name POSCategory
 		FROM UseCasing_CTE UC
 		LEFT JOIN DWH_DB.DBO.DIM_MerchantCategoryCodes	  MCC ON UC.McCode = MCC.Code
-		LEFT JOIN DWH_DB.DBO.DIM_POSCategories PC ON PC.Id	   = MCC.PosCategory_Id
+		LEFT JOIN DWH_DB.DBO.DIM_POSCategories 	   PC ON PC.Id	   = MCC.PosCategory_Id
+		LEFT JOIN DWH_DB.dbo.DIM_RecognizedBrands eca ON ECA.Id = UC.ExternalCardAcceptorId
 		WHERE (
 			   (BrandRecognizedAfterall  =	  1  and @Recognized = 1	)
 			OR (BrandRecognizedAfterall  =	  0  and @Recognized = 0	)
