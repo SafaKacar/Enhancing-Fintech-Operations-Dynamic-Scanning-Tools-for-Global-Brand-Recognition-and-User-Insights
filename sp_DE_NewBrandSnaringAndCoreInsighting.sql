@@ -19,6 +19,8 @@ ALTER PROCEDURE  sp_DE_NewBrandSnaringAndCoreInsighting
 									   (@StartDate	    as DATE,
 									    @_Description_1 as VARCHAR(MAX)
 									   ,@_Description_2 as VARCHAR(MAX)
+									   ,@_DescriptionExcluded_1 as VARCHAR(MAX)
+									   ,@_DescriptionExcluded_2 as VARCHAR(MAX)
 									   ,@_Is_OfflineTransaction AS VARCHAR(MAX)
 									   ,@_Is_NotDomestic	    AS VARCHAR(MAX)
 									   ,@_CityCodeTR	    AS VARCHAR(MAX)
@@ -113,7 +115,43 @@ SET @_CityName =
 						,'ı','I')
 						,'ğ','G')
 						,'Ğ','G')
+SET @_DescriptionExcluded_1
+					  = REPLACE (
+						REPLACE (
+						REPLACE (
+						REPLACE (
+						REPLACE (
+						REPLACE (
+						REPLACE (
+						REPLACE(REPLACE(ISNULL(@_DescriptionExcluded_1,'🗺')
+						,'Ü','U')
+						,'ü','U')
+						,'İ','I')
+						,'Ş','S')
+						,'ö','O')
+						,'Ö','O')
+						,'ı','I')
+						,'ğ','G')
+						,'Ğ','G')
 
+SET @_DescriptionExcluded_2
+					  = REPLACE (
+						REPLACE (
+						REPLACE (
+						REPLACE (
+						REPLACE (
+						REPLACE (
+						REPLACE (
+						REPLACE(REPLACE(ISNULL(@_DescriptionExcluded_2,'🗺')
+						,'Ü','U')
+						,'ü','U')
+						,'İ','I')
+						,'Ş','S')
+						,'ö','O')
+						,'Ö','O')
+						,'ı','I')
+						,'ğ','G')
+						,'Ğ','G')
 SET @_CountryName =
 						REPLACE (
 						REPLACE (
@@ -500,6 +538,11 @@ END
 											l.[Description]+' ' LIKE '%'+UPPER(@D11)+'%'+UPPER(@D12)+'%'	  
 											OR
 											l.[Description]+' ' LIKE '%'+UPPER(IIF(@D21 = ' ',@D11,NULL))+'%'+UPPER(IIF(@D22=' ',IIF(@D21 = ' ',@D12,NULL),@D22))+'%'
+										  )
+									  AND (
+											l.[Description] NOT LIKE '%'+UPPER(@_DescriptionExcluded_1)+'%'	  
+											OR
+											l.[Description] NOT LIKE '%'+UPPER(@_DescriptionExcluded_2)+'%'
 										  )
 									  AND (
 										   
