@@ -30,6 +30,7 @@ ALTER PROCEDURE  sp_DE_NewBrandSnaringAndCoreInsighting
 									   ,@Recognized		AS VARCHAR(MAX)
 									   ,@_TxCountGreaterThanOrEqual AS INT
 									   ,@_ExternalPoolId		AS VARCHAR(MAX)
+									   ,@_RecognizedBrandSearch AS VARCHAR(MAX)
 									   )
  AS	
 DECLARE		@D11			as VARCHAR(MAX),
@@ -534,6 +535,7 @@ END
 									  AND L.Is_OfflineTransaction IN (@_Is_OfflineTransaction_1,ISNULL(@_Is_OfflineTransaction_2,@_Is_OfflineTransaction_1))
 									  AND L.Is_NotDomestic  IN (@_Is_NotDomestic_1 ,ISNULL(@_Is_NotDomestic_2 ,@_Is_NotDomestic_1 ))
 									  AND ISNULL(CAST(L.ExternalPoolId AS VARCHAR(MAX)),' ')+' ' LIKE '%'+@_ExternalPoolId+'%'
+									  AND ISNULL(L.BrandName,' ')+' ' LIKE '%'+ISNULL(@_RecognizedBrandSearch,' ')+'%'
 									  AND (
 											l.[Description]+' ' LIKE '%'+UPPER(@D11)+'%'+UPPER(@D12)+'%'	  
 											OR
